@@ -3,11 +3,6 @@
 **作者：ZamoniaTargaryen**
 **项目链接：[https://github.com/ZamoniaTargaryen/Asoul-bot](https://github.com/ZamoniaTargaryen/Asoul-bot)**
 
----
-
-@[TOC](目录)
-
----
 
 ## 配置运行
 
@@ -75,7 +70,6 @@
 ## 注意事项
 1. 本项目基于AGPL协议开源
 2. 本项目的开源、二次使用都应当遵守中华人民共和国的法律法规
-3. 本项目的开源、二次使用应当遵守A-SOUL_Official的最新版二创规则声明
 4. 本项目的开源、二次使用都应当不包含对其他人的诋毁、拉踩
 
 ## 作者及主要贡献者
@@ -87,6 +81,4 @@
 2. [nonebot2 Document](https://v2.nonebot.dev/)
 3. [原版bot (现已合并)](https://github.com/ZamoniaTargaryen/Asoul-bot)
 4. [平台迁移后bot](https://github.com/JackFishxxx/Asoul-bot)
-5. [二创规则说明4.0](https://www.bilibili.com/read/cv12242629)
-6. [二创规则说明4.0更新](https://www.bilibili.com/read/cv12242629)
 
