@@ -1,5 +1,6 @@
 # Asoul-bot
 一个基于nonebot2和go-cqhttp的Asoul-bot开源项目，包含了一系列的小功能，可以轻量化的部署在本地从而实现一个有关Asoul的群聊bot。
+
 **作者：ZamoniaTargaryen**
 **项目链接：[https://github.com/ZamoniaTargaryen/Asoul-bot](https://github.com/ZamoniaTargaryen/Asoul-bot)**
 
