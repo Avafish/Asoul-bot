@@ -54,6 +54,6 @@ async def main():
     json.dump(title, title_obj)
     pic_obj = open(r'.\src\assist\pic.json','w')
     json.dump(pic, pic_obj)
-    url_obj = open(r'.\src\url.json','w')
+    url_obj = open(r'.\src\assist\url.json','w')
     json.dump(url, url_obj)
     await bot.send_group_msg(group_id=qqgroup,message = 'slice updated')

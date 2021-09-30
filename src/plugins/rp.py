@@ -1,16 +1,16 @@
 import time
 from hashlib import md5
-from nonebot.plugin import on_keyword
+from nonebot.plugin import on_command
 from nonebot.rule import to_me
 from nonebot.typing import T_State
 from nonebot.adapters import Bot, Event
 import re
 
-a = '向晚, 晚晚, 幽默钻头, 兄弟, 我兄弟, 晚比, 晚'
-b = '贝拉, 拉姐, 拉'
-c = '珈乐, 小狼王, 乐'
-d = '嘉然, 然然, 粉色小矮子, 粉色小恶魔, 小羽毛球, 粉色小猪猪, 然比, 然'
-e = '乃琳, n0, 白色香顶边, 坏女人, 琳'
+a = '向晚, 晚晚, 幽默钻头, 兄弟, 我兄弟, 晚比, 晚,向晚大魔王,Ava,AvA,ava'
+b = '贝拉, 拉姐, 拉,Bella,bella'
+c = '珈乐, 小狼王, 乐,Carol,carol'
+d = '嘉然, 然然, 粉色小矮子, 粉色小恶魔, 小羽毛球, 粉色小猪猪, 然比, 然,嘉然今天吃什么,Diana,diana'
+e = '乃琳, n0, 白色香顶边, 坏女人, 琳,Eileen,eileen'
 ab = '师徒组, 师徒, 憨次方'
 ac = '萤火虫'
 ad = '嘉晚饭'
@@ -19,7 +19,7 @@ bc = '贝贝珈'
 bd = '超级嘉贝'
 be = '乃贝, 奶贝'
 cd = 'c++, c嘉珈, c珈嘉'
-ce = '珈特琳'
+ce = '珈特琳, 琳琅'
 de = '母女组'
 cao = '阿草, 羊驼, 臭羊驼'
 shark = '七海, 海子姐, nanami'
@@ -27,10 +27,11 @@ shark = '七海, 海子姐, nanami'
 names = [a, b, c, d, e, ab, ac, ad, ae, bc, bd, be, cd, ce, de, cao, shark]
 
 
-rp = on_keyword(['人品','运势'], rule=to_me(), priority=5)
+rp = on_command('今日人品',aliases={'运势','今日运势'}, rule=to_me(), priority=1)
 @rp.handle()
 async def return_rp(bot: Bot, event: Event, state: T_State):
-    args = str(event.get_message()).replace('人品','').replace('运势','').replace('的','').replace(',','').replace(' ','').replace('，','')
+    args = str(event.get_message()).replace(' ','')
+    #print(args)
     if args:
         rpname = args  #先把运势对象复制给usrname
         usrname = args  #用户所输入对象
@@ -74,7 +75,7 @@ async def get_rp(usrname: str, usrqq: str, rpname: str):
             }
     }
     ]
-    if usrname == rpname:
+    if usrqq == rpname:
         rely.insert(1,
             {
             "type": "text",

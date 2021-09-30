@@ -7,7 +7,7 @@ import re
 from nonebot.adapters import Bot, Event
 from nonebot.rule import to_me
 
-chance = on_command("概率", rule=to_me(), priority=5)
+chance = on_command("概率", rule=to_me(), priority=1)
 
 @chance.handle()
 async def _(bot: Bot, event: Event):
@@ -32,6 +32,7 @@ async def _(bot: Bot, event: Event):
         t = [j for j in sha_con if j.isnumeric()]
         t = "".join(t)
         result = int(s) + int(t)
+        usrname = int(usrname)
         rp = result%101
 
         rely = [{

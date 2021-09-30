@@ -4,7 +4,7 @@ from nonebot import on_command
 from nonebot.adapters import Bot, Event
 from nonebot.rule import to_me
 
-img = on_command('表情包', rule=to_me(), priority=5)
+img = on_command('表情包', rule=to_me(), priority=1)
 
 @img.handle()
 async def _(bot: Bot, event: Event):

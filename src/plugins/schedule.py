@@ -4,7 +4,7 @@ import re
 from nonebot.rule import to_me
 from nonebot.adapters import Bot, Event
 
-shedule = on_command("日程表", rule=to_me(), priority=5)
+shedule = on_command("日程表", rule=to_me(), priority=1)
 
 @shedule.handle()
 async def return_shedule(bot: Bot, event: Event):
