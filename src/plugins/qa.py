@@ -4,7 +4,7 @@ from nonebot.adapters import Bot, Event
 from bilibili_api import user
 import re
 
-qa = on_keyword(["qa", "QA"], rule=to_me(), priority=5)
+qa = on_keyword(["qa", "QA"], rule=to_me(), priority=1)
 
 @qa.handle()
 async def return_qa(bot: Bot, event: Event, state: dict):

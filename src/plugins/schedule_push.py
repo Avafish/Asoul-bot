@@ -7,19 +7,19 @@ from nonebot import require
 
 obj = open(r'.\global.json','rb')
 data = json.load(obj)
-qqgroup = data['all']
+qqgroup = data['all'] + data['no_shark']
 qq_len = len(qqgroup)
 uid = 703007996
 glo_time = 0
 
 scheduler = require("nonebot_plugin_apscheduler").scheduler
 
-@scheduler.scheduled_job('interval', minutes=10, id="get_schedule")
+@scheduler.scheduled_job('interval', minutes=1, id="get_schedule")
 async def main():
     t = time.localtime()
     tw = t.tm_wday
     bot = nonebot.get_bot()
-    if tw == 1:
+    if tw == 1 or tw == 2:
         u = user.User(uid)
         page = await u.get_dynamics(0)
         nxt = page['next_offset']

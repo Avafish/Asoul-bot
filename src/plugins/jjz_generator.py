@@ -27,7 +27,7 @@ def ran(ilist):
     random.shuffle(ilist)
     return ilist[0]
 
-jjz = on_command('绝绝子', aliases={'jjz'}, rule=to_me(), priority=5)
+jjz = on_command('绝绝子', aliases={'jjz'}, rule=to_me(), priority=1)
 
 @jjz.handle()
 async def _(bot: Bot, event: Event):

@@ -39,7 +39,7 @@ def another():
     xx += "    "
     return xx
 
-bullshit = on_command('狗屁不通', aliases={'bullshit'}, rule=to_me(), priority=5)
+bullshit = on_command('狗屁不通', aliases={'bullshit'}, rule=to_me(), priority=1)
 
 @bullshit.handle()
 async def _(bot: Bot, event: Event):

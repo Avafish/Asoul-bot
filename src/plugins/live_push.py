@@ -3,14 +3,16 @@ from os import path
 import nonebot
 from bilibili_api import live
 from nonebot import require
+import time
 
-old_status = [-1,-1,-1,-1,-1,-1]
+old_status = [-1,-1,-1,-1,-1,-1,-1]
 
 obj = open(r'.\global.json','rb')
 data = json.load(obj)
 
 qqgroup = data['all']
 qq_noshark = data['no_shark']
+qq_shark = data['shark']
 qq_len = len(qqgroup)
 qq_noshark_len = len(qq_noshark)
 
@@ -20,9 +22,11 @@ uid_len = len(uid_all)
 
 scheduler = require("nonebot_plugin_apscheduler").scheduler
 
-@scheduler.scheduled_job('interval', minutes=3, id="get_live")
+@scheduler.scheduled_job('interval', minutes=2, id="get_live")
 async def main():
     bot = nonebot.get_bot()
+    t = time.time()
+    t = int(t)
     for i in range(0,uid_len):      
         global old_status
         room = live.LiveRoom(uid_all[i])
@@ -30,11 +34,13 @@ async def main():
         room_info = info['room_info']
         title = room_info['title']
         cover = room_info['cover']
-        print(cover)
         live_status = room_info['live_status']
-        #live_start_time = room_info['live_start_time']
+        live_start_time = room_info['live_start_time']
+        dif = (t-live_start_time)/600
         url = r"https://live.bilibili.com/" + str(uid_all[i])
         if live_status == old_status[i]:
+            pass
+        elif dif > 2:
             pass
         elif live_status == 1:
             rely = [
@@ -50,9 +56,10 @@ async def main():
                     "file" : cover
                 }
             }]
-            if i == 5:
-                for j in range(0,qq_len):
-                    old_status[i] = live_status
+            if i == 6:
+                old_status[i] = live_status
+                await bot.send_group_msg(group_id=qq_shark[0],message=rely)
+                for j in range(0,qq_len):                   
                     await bot.send_group_msg(group_id=qqgroup[j],message=rely)
             else:
                 for k in range(0,qq_len):
