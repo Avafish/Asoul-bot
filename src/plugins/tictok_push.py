@@ -75,16 +75,22 @@ async def main():
                 cov = get_cover(i)
             except:
                 cov = ''
-            f = open(r'.\src\assist\{}.txt'.format(name),'r')
-            txt = f.read()
-            txt = txt.strip()
+            f = open(r'.\src\assist\{}.txt'.format(name),'rb')
+            # txt = f.read()
+            # txt = txt.strip()
+            txt = json.load(f)
+            txt_keys = txt.keys()
             #print('n_n',n_n,'txt',txt)
-            if n_n[0] == txt:
+            if n_n[0] in txt_keys:
+            # if n_n[0] == txt:
                 f.close()
             else:
-                f = open(r'.\src\assist\{}.txt'.format(name),'w')
-                f.write(n_n[0])
-                f.close()
+                txt[n_n[0]] = 0
+                with open (r'.\src\assist\{}.txt'.format(name),'w',encoding='urf-8') as f:
+                    f.write(json.dumps(txt))
+                # f = open(r'.\src\assist\{}.txt'.format(name),'wb')
+                # f.write(n_n[0])
+                # f.close()
                 rely = [{
                     "type":"text",
                     "data":{
